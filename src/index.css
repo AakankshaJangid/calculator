@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: url('./Components/bg.webp');
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.App{
+  align-content: center;
+  width: fit-content;
+  height: 60%;
+  margin: 10% 35%;
+  padding: 1rem;
+  border: 2px solid black;
+  background: gainsboro;
+}
+.mainCalc{
+  display: flex;
+  flex-direction: row;
+  margin: 0%;
+  gap: 1.3rem;
+  padding: 1rem;
+  font-size: 2rem;
+  align-items: center;
+}
+
+.top-rows{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1rem;
+}
+.bottom-row{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+.zero{
+  width: 90%;
+}
+.dot{
+  width: 45%;
+}
+.operations{
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+  gap: 1rem;
+}
+.input-screen{
+  text-align: right;
+  width: 90%;
+  height: 1.5rem;
+  margin-bottom: 0%;
+  border-bottom: none;
+  padding-bottom: 0%;
+  font-size: 1.5rem;
+}
+.result-screen{
+  text-align: right;
+  width: 90%;
+  height:1.5rem;
+  margin-top: 0%;
+  border-top: none;
+  padding-top: 0%;
+  font-size: 1.5rem;
+}
+.result-screen,.input-screen:focus{
+  outline: none;
+}
+.output-screen{
+  display: flex;
+  flex-direction: column;
+  gap: 0%;
+  align-items: center;
+}
+.mainCalc button{
+  font-size: 2rem;
+  background: darkslategray;
+  color: white;
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.5rem 1rem;
+}
+.mainCalc button:hover{
+  background: rgb(172, 170, 170);
+  color: black;
+}
