@@ -1,49 +1,76 @@
 import React, { useState } from 'react'
 import OutputScreen from './OutputScreen'
-
 function Buttons() {
     const [input,setInput] = useState('')
-    const [result,setResult] = useState('')
-    const onClick =  (e) => {
-        
-        const value = e.target.innerText
+    let [result,setResult] = useState(0)
 
-        switch (value) {
-            case '=': {
-                if (input !== '') {
-                    try {
-                        console.log(input)
-                        result = Function("return "+input.toString())
-                        console.log(result)
-                    }
-                    catch(err) {
-                        setResult("Math Error")
-                    }
-                    if (result === undefined)
-                        setResult("Math Error")
-                    else {
-                        setResult(result)
-                    }
-                }
-                break
-            }
-            case 'Clear' : {
-                setResult('')
-                setInput('')
-                break
-            }
-            case 'C' : {
-                let str = input
-                str = str.substring(0, str.length-1)
-                setInput(str)
-                break
-            }
-            default: {
-                setInput(input + value)
-                console.log(value)
-                break
-            }
-        }
+    // const onClick =  (e) => {
+        
+    //     const value = e.target.innerText
+
+    //     switch (value) {
+    //         case '=': {
+    //             if (input !== '') {
+    //                 try {
+    //                     console.log(input)
+    //                     //method : 1 , using eval method
+    //                     result = eval(input)
+    //                     // //method : 2 , using replacement of eval method
+    //                     // result = Function("return "+input.toString())
+    //                     console.log(result)
+    //                 }
+    //                 catch(err) {
+    //                     setResult("Math Error")
+    //                 }
+    //                 if (result === undefined)
+    //                     setResult("Math Error")
+    //                 else {
+    //                     setResult(result)
+    //                 }
+    //             }
+    //             break
+    //         }
+    //         case 'Clear' : {
+    //             setResult('')
+    //             setInput('')
+    //             break
+    //         }
+    //         case 'C' : {
+    //             let str = input
+    //             str = str.substring(0, str.length-1)
+    //             setInput(str)
+    //             break
+    //         }
+    //         default: {
+    //             setInput(input + value)
+    //             console.log(value)
+    //             break
+    //         }
+    //     }
+    // }
+    const backspace = () => {
+        let str = input
+        str = str.substring(0, str.length-1)
+        setInput(str)
+    }
+    const clear = () => {
+        setResult('')
+        setInput('')
+    }
+    const onClick = (e) => {
+        const value = e.target.innerText
+        setInput(input + value)
+    }
+    const final = () => {
+        if (input !== ''){
+            console.log(input)
+            console.log(result)
+            result = eval(input)
+            console.log(result)
+            setResult(result)
+        } else{
+            setResult("Error!!!")
+        }           
     }
 
   return (
@@ -52,8 +79,8 @@ function Buttons() {
     <div className='mainCalc'>
       <div className='numbers'>
         <div className='top-rows'>
-        <button onClick={onClick} id='clear' >Clear</button>
-        <button onClick={onClick} id='backspace'>C</button>
+        <button onClick={clear} id='clear' className='clear'>Clear</button>
+        <button onClick={backspace} id='backspace'>C</button>
         <button value='%' onClick={onClick}>%</button>
         <button value='7' onClick={onClick}>7</button>
         <button value='8' onClick={onClick}>8</button>
@@ -75,7 +102,7 @@ function Buttons() {
         <button value='*' onClick={onClick}>*</button>
         <button value='-' onClick={onClick}>-</button>
         <button value='+' onClick={onClick}>+</button>
-        <button value='=' onClick={onClick}>=</button>
+        <button value='=' onClick={final}>=</button>
       </div>
     </div>
     </div>
